@@ -1,5 +1,5 @@
 <template>
-  <div
+  <span
     draggable="true"
     @transitionStart="transitionStart"
     @transitionEnd="transitionEnd"
@@ -11,7 +11,7 @@
     :class="{ isDragging }"
   >
     <slot></slot>
-  </div>
+  </span>
 </template>
 
 <script>
