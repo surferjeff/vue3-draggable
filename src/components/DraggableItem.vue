@@ -35,7 +35,10 @@ export default {
       onDragEnd,
       transitionStart,
       transitionEnd
-    } = useDraggableItem(item, position, containerId, context);
+    } = useDraggableItem(item, position, containerId, context,
+      (item) => context.emit("start", item),
+      (item) => context.emit("end", item)
+    );
 
     return {
       draggableItemEl,

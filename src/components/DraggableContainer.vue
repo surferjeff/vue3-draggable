@@ -9,6 +9,8 @@
         :position="index"
         @itemDragOver="onItemDragOver"
         @dragenter.prevent
+        @start="(item) => $emit('start', item)"
+        @end="(item) => $emit('end', item)"
       >
         <slot name="item" :item="item.data"></slot>
       </draggable-item>

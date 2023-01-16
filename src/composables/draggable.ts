@@ -79,7 +79,9 @@ const useDraggableItem = (
   item: Ref<any>,
   position: Ref<number>,
   containerId: Ref<number>,
-  context: SetupContext
+  context: SetupContext,
+  start: (item: any) => void,
+  end: (item: any) => void
 ) => {
   const draggableItemEl = ref(null);
   const isDragging = ref(
@@ -101,10 +103,13 @@ const useDraggableItem = (
     itemCurrentlyDragging.value = item.value;
     containerIdCurrentlyDraggedOver.value = containerId.value;
     isDragging.value = true;
+    start(item.value.data);
   };
 
   const onDragEnd = () => {
+    const item = itemCurrentlyDragging.value;
     itemCurrentlyDragging.value = null;
+    end(item.data);
   };
 
   const onDragOver = throttle((e: DragEvent) => {
